@@ -59,6 +59,9 @@ describe Movies do
       expect(movies.first.description).to eq(params[:description])
       expect(movies.first.image_url).to eq(params[:image_url])
       expect(movies.first.presentation_days.count).to eq(4)
+
+      presentation_days = JSON.parse(last_response.body)['presentation_days']
+      expect(presentation_days.count).to eq(4)
     end
 
     it "shouldn't create a movie because not include params" do

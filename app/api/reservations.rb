@@ -25,7 +25,7 @@ class Reservations < Grape::API
       create_reservation = CreateReservation.new
       create_reservation.call(params) do |transaction|
         transaction.success do |reservation|
-          { reservation: reservation }
+          reservation
         end
 
         transaction.failure do |errors|

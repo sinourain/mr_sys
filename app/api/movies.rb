@@ -21,8 +21,8 @@ class Movies < Grape::API
     post do
       create_movie = CreateMovie.new
       create_movie.call(params) do |transaction|
-        transaction.success do |movie, presentation_days|
-          { movie: movie, presentation_days: presentation_days }
+        transaction.success do |movie|
+          movie
         end
 
         transaction.failure do |errors|

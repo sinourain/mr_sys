@@ -19,7 +19,8 @@ Run the following commands:
 Configure your env variables in the .env file
 
 4) bundle install
-5) rake db:migrate
+5) psql --user=postgres -c 'create database <DATABASE_NAME_HERE>'
+rake db:migrate
 6) rackup
 
 Application run with the following local URL:
@@ -32,7 +33,8 @@ localhost:9292
 
 Run the following commands:
 
-1) RACK_ENV=test rake db:migrate
+1) 5) psql --user=postgres -c 'create database mr_sys_test'
+RACK_ENV=test rake db:migrate
 2) rspec spec
 
 ## Api Examples

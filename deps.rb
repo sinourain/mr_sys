@@ -9,7 +9,7 @@ require 'bundler'
 # load dotenv
 require 'dotenv/load'
 
-require "pry"
+require 'pry'
 require 'pry-remote'
 
 %w(

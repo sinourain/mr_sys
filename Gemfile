@@ -10,6 +10,8 @@ gem 'sqlite3'
 gem 'dotenv'
 gem 'pry'
 gem 'pry-remote'
+gem 'dry-transaction'
+gem 'dry-monads'
 
 group :test do
   gem 'factory_bot'

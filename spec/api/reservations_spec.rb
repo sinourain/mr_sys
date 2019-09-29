@@ -41,6 +41,15 @@ describe Reservations do
       expect(reservations.count).to eq(1)
       expect(reservations.first['movie_id'].to_i).to eq(movie.id)
     end
+
+    it 'gets a list of all reservations between two long dates' do 
+      get '/api/reservations', start_date: @today, end_date: @today + 300
+      expect(last_response.status).to eq(200)
+      reservations = JSON.parse(last_response.body)['reservations']
+      expect(reservations.count).to eq(3)
+      expect(reservations.first['movie_id'].to_i).to eq(movie.id)
+      expect(reservations.last['movie_id'].to_i).to eq(movie.id)
+    end
   end
 
   describe 'POST /api/reservations' do

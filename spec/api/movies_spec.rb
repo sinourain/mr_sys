@@ -36,4 +36,35 @@ describe Movies do
       expect(movies.first['image_url']).to eq(movie.image_url)
     end
   end
+
+  describe 'POST /api/movies' do
+    before do
+      expect(Movie.count).to eq(0)
+    end
+
+    it 'create a movie' do
+      params = {
+        name: "Example 2", 
+        description: "Some description", 
+        image_url: "s3.example.com/cinema/images/67890_movie.jpg",
+        presentation_days: ["2019-12-12","2019-12-13","2019-12-14","2019-12-15"]
+      }
+      post '/api/movies', params
+      
+      expect(last_response.status).to eq(201)
+      movies = Movie.all
+      expect(movies.count).to eq(1)
+
+      expect(movies.first.name).to eq(params[:name])
+      expect(movies.first.description).to eq(params[:description])
+      expect(movies.first.image_url).to eq(params[:image_url])
+      expect(movies.first.presentation_days.count).to eq(4)
+    end
+
+    it "can't create a movie because the params" do
+      post '/api/movies'
+      expect(last_response.status).to eq(400)
+      expect(Movie.count).to eq(0)
+    end
+  end
 end

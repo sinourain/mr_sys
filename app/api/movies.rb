@@ -16,6 +16,7 @@ class Movies < Grape::API
       requires :name, type: String, desc: 'Movie name.'
       requires :description, type: String, desc: 'Movie description.'
       requires :image_url, type: String, desc: 'Movie image URL.'
+      requires :presentation_days, type: Array, desc: "Movie's presentation days."
     end
     post do
       create_movie = CreateMovie.new

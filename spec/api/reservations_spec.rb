@@ -70,5 +70,29 @@ describe Reservations do
       expect(last_response.status).to eq(400)
       expect(Reservation.count).to eq(3)
     end
+
+    it "shouldn't create a reservation because people_number is bigger than 10" do
+      params = {
+        movie_id: movie.id,
+        presentation_day_id: Reservation.first.id,
+        people_number: 11
+      }
+
+      post '/api/reservations', params
+      expect(last_response.status).to eq(422)
+      expect(Reservation.count).to eq(3)
+    end
+
+    it "shouldn't create a reservation because people_number is smaller than 1" do
+      params = {
+        movie_id: movie.id,
+        presentation_day_id: Reservation.first.id,
+        people_number: 0
+      }
+
+      post '/api/reservations', params
+      expect(last_response.status).to eq(422)
+      expect(Reservation.count).to eq(3)
+    end
   end
 end

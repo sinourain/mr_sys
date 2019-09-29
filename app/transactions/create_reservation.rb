@@ -7,9 +7,9 @@ class CreateReservation
   step :persist
 
   def persist(attrs)
-    reservation = Reservation.create(attrs)
-  
-    if reservation.errors.blank?
+    reservation = Reservation.new(attrs)
+    if reservation.valid?
+      reservation.save
       Success(reservation: reservation)
     else
       Failure(errors: reservation.errors)

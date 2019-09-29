@@ -6,6 +6,9 @@ gem 'rake'
 gem 'sinatra'
 gem 'sequel'
 gem 'sqlite3'
+gem 'dotenv'
+gem 'pry'
+gem 'pry-remote'
 
 group :test do
   gem 'rack-test'

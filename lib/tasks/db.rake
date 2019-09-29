@@ -1,7 +1,8 @@
 namespace :db do
   desc "Run migrations"
   task :migrate, [:version] do |t, args|
-    require "sequel"
+    require 'dotenv/load'
+    require 'sequel'
     Sequel.extension :migration
     require './db'
     if args[:version]

@@ -1,3 +1,3 @@
 require './main'
 
-run Rack::Cascade.new [Movies]
+run Rack::Cascade.new [Movies, Reservations]

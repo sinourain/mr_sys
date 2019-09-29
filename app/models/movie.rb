@@ -7,7 +7,7 @@ class Movie < Sequel::Model
 
   dataset_module do
     def list_by_day_name(day_name)
-      where(id: PresentationDay.where(day_name: day_name).map(:id))
+      where(id: PresentationDay.where(day_name: day_name).map(:movie_id))
     end
   end
 

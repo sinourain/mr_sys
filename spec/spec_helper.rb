@@ -26,7 +26,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     FactoryBot.find_definitions
   end
-  
+
   config.before(:each) do
     existing_tables = Sequel::Model.db.tables
     tables_to_preserve = [:schema_info, :schema_migrations]

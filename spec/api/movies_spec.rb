@@ -61,7 +61,7 @@ describe Movies do
       expect(movies.first.presentation_days.count).to eq(4)
     end
 
-    it "can't create a movie because the params" do
+    it "shouldn't create a movie because not include params" do
       post '/api/movies'
       expect(last_response.status).to eq(400)
       expect(Movie.count).to eq(0)

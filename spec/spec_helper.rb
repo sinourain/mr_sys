@@ -1,8 +1,11 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'rspec'
 require 'rack/test'
 require './main'
 
-Dir[('./spec/support/**/*.rb')].each { |f| require f }
+
+Dir[('./spec/support/**/*.rb')].each { |file| require file }
 
 
 RSpec.configure do |config|

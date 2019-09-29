@@ -5,10 +5,11 @@ describe Movies do
     Movies
   end
 
-  describe 'GET /api/example' do 
+  describe 'GET /api/movies' do 
     it 'gets a list of all movies' do 
-      get '/api/example'
+      get '/api/movies'
       expect(last_response.status).to eq(200)
+      expect(JSON.parse(last_response.body)['movies']).to eq([])
     end
   end
 end

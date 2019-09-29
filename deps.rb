@@ -6,6 +6,12 @@ require 'rubygems'
 # load bundler
 require 'bundler'
 
+# load dotenv
+require 'dotenv/load'
+
+require "pry"
+require 'pry-remote'
+
 %w(
 	grape
 	sequel

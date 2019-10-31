@@ -1,0 +1,22 @@
+stages:
+  - name: Build Movie Reservation System
+    # Conditions for stages
+    when:
+      branch: master
+      event: [ push, pull_request ]
+    # Multiple steps run concurrently
+    steps:
+    - runScriptConfig:
+        image: sinourain/mr_sys:latest
+        shellScript: |-
+          gem install bundler
+          && bundle check || bundle install
+          && RACK_ENV=test bundle exec rake db:migrate
+          && bundle exec rspec spec
+      env:
+        RACK_ENV=development
+        POSTGRES_PASSWORD=admin123
+        POSTGRES_USER=postgresadmin
+        POSTGRES_DB=mr_sys
+        POSTGRES_PORT=5432
+        POSTGRES_HOST=10.43.1.87

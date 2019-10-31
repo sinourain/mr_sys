@@ -33,7 +33,7 @@ localhost:9292
 
 Run the following commands:
 
-1) 5) psql --user=postgres -c 'create database mr_sys_test'
+1) psql --user=postgres -c 'create database mr_sys_test'
 RACK_ENV=test rake db:migrate
 2) rspec spec
 

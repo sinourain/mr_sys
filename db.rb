@@ -8,7 +8,7 @@ DB =
   when 'test'
     Sequel.connect('postgres://postgres@localhost/mr_sys_test')
   else
-    Sequel.connect(ENV["DATABASE_URL"])
+    Sequel.connect("postgresql://#{ENV["POSTGRES_USER"]}:#{ENV["POSTGRES_PASSWORD"]}@#{ENV["POSTGRES_HOST"]}:#{ENV["POSTGRES_PORT"]}/#{ENV["POSTGRES_DB"]}")
   end
 Sequel::Model.db.extension(:pagination)
 Sequel::Model.strict_param_setting = false

@@ -14,9 +14,9 @@ stages:
           && RACK_ENV=test bundle exec rake db:migrate
           && bundle exec rspec spec
       env:
-        RACK_ENV=development
-        POSTGRES_PASSWORD=admin123
-        POSTGRES_USER=postgresadmin
-        POSTGRES_DB=mr_sys
-        POSTGRES_PORT=5432
-        POSTGRES_HOST=10.43.1.87
+        RACK_ENV: development
+        POSTGRES_PASSWORD: admin123
+        POSTGRES_USER: postgresadmin
+        POSTGRES_DB: mr_sys
+        POSTGRES_PORT: 5432
+        POSTGRES_HOST: 10.43.1.87

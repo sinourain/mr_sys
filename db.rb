@@ -6,7 +6,7 @@ Sequel::Model.raise_on_save_failure = true # Do not throw exceptions on failure
 DB = 
   case ENV['RACK_ENV']
   when 'test'
-    Sequel.connect('postgres://postgres@localhost/mr_sys_test')
+    Sequel.connect("postgresql://#{ENV["POSTGRES_USER"]}:#{ENV["POSTGRES_PASSWORD"]}@#{ENV["POSTGRES_HOST"]}:#{ENV["POSTGRES_PORT"]}/mr_sys_test")
   else
     Sequel.connect("postgresql://#{ENV["POSTGRES_USER"]}:#{ENV["POSTGRES_PASSWORD"]}@#{ENV["POSTGRES_HOST"]}:#{ENV["POSTGRES_PORT"]}/#{ENV["POSTGRES_DB"]}")
   end

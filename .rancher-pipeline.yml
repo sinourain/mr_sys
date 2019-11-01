@@ -7,7 +7,6 @@ stages:
       tag: sinourain/mr_sys:latest
       # Optionally push to remote registry
       pushRemote: true
-      registry: hub.docker.com
 - name: Build Movie Reservation System
   steps:
   - runScriptConfig:

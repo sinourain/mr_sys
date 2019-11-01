@@ -5,8 +5,16 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: sinourain/mr_sys:latest
-      # Optionally push to remote registry
       pushRemote: true
+      registry: 025872836752.dkr.ecr.us-east-1.amazonaws.com
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - push
+        - pull_request
 - name: Build Movie Reservation System
   steps:
   - runScriptConfig:

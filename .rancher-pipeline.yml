@@ -1,4 +1,13 @@
 stages:
+- name: Build image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: sinourain/mr_sys:latest
+      # Optionally push to remote registry
+      pushRemote: true
+      registry: hub.docker.com
 - name: Build Movie Reservation System
   steps:
   - runScriptConfig:
@@ -16,17 +25,11 @@ stages:
       POSTGRES_USER: postgresadmin
       RACK_ENV: development
     when:
+      branch:
+        include:
+        - master
       event:
         include:
         - push
-        exclude:
         - pull_request
-  when:
-    branch:
-      include:
-      - master
-    event:
-      include:
-      - push
-      - pull_request
 notification: {}
